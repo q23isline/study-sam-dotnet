@@ -44,6 +44,15 @@ Resources:
           Properties:
             Path: /
             Method: ANY
+  ApiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      # TODO: ローカル開発用に許可しているので、環境変数などで制御できるようにする
+      Cors:
+        AllowOrigin: "'http://localhost:3000,http://localhost:5000,http://localhost:5173'"
+        AllowHeaders: "'Content-Type,X-CSRF-TOKEN'"
+        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
 
   # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
   SampleTable:
