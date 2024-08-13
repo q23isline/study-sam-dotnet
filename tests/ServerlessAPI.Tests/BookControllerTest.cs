@@ -1,7 +1,7 @@
-﻿using ServerlessAPI.Entities;
-using ServerlessAPI.Repositories;
-using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using ServerlessAPI.Entities;
+using ServerlessAPI.Repositories;
 using System.Collections.Generic;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
