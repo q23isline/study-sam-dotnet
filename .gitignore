@@ -406,3 +406,8 @@ __pycache__/
 
 # ビルドの結果は無視する
 .aws-sam
+
+# ログファイル
+!/logs/
+/logs/*
+!/logs/.gitkeep
