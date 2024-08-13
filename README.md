@@ -57,6 +57,12 @@ sam build
 docker run --rm -w /app -v $(pwd):/app mcr.microsoft.com/dotnet/sdk:8.0 dotnet format --verify-no-changes ./src/ServerlessAPI/ServerlessAPI.csproj
 ```
 
+## AWS SAM テンプレートを検証
+
+```bash
+sam validate --lint
+```
+
 ---
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
