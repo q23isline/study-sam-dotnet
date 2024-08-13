@@ -4,6 +4,8 @@ using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 
+using Microsoft.EntityFrameworkCore;
+
 using ServerlessAPI.Repositories;
 
 
@@ -21,6 +23,14 @@ builder.Services
         {
             options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         });
+
+// <https://www.nuget.org/packages/Pomelo.EntityFrameworkCore.MySql/#readme-body-tab>
+// Add MySQL DbContext
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 3, 0)) // MySQLのバージョンを指定
+    ));
 
 string region = Environment.GetEnvironmentVariable("AWS_REGION") ?? RegionEndpoint.USEast2.SystemName;
 builder.Services
