@@ -1,6 +1,7 @@
 using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using Microsoft.EntityFrameworkCore;
 using ServerlessAPI.Repositories;
 using System.Text.Json;
 
@@ -20,6 +21,14 @@ builder.Services
             options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         });
 
+// <https://www.nuget.org/packages/Pomelo.EntityFrameworkCore.MySql/#readme-body-tab>
+// Add MySQL DbContext
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 3, 0)) // MySQLのバージョンを指定
+    ));
+
 string region = Environment.GetEnvironmentVariable("AWS_REGION") ?? RegionEndpoint.USEast2.SystemName;
 builder.Services
         .AddSingleton<IAmazonDynamoDB>(new AmazonDynamoDBClient(RegionEndpoint.GetBySystemName(region)))
@@ -30,6 +39,7 @@ builder.Services
 // with a Lambda function contained in the Amazon.Lambda.AspNetCoreServer package, which marshals the request into the ASP.NET Core hosting framework.
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
+// <https://learn.microsoft.com/ja-jp/aspnet/core/security/cors?view=aspnetcore-8.0#cors-with-named-policy-and-middleware>
 // TODO: ローカル開発用に許可しているので、環境変数などで制御できるようにする
 builder.Services
         .AddCors(options =>
