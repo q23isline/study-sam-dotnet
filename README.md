@@ -1,5 +1,79 @@
 # study-sam-dotnet
 
+[![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+![releases](https://img.shields.io/github/release/q23isline/study-sam-dotnet.svg?logo=github)
+[![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=555555&color=007acc&logoColor=007acc)](https://open.vscode.dev/q23isline/study-sam-dotnet)
+
+[![.NET](https://img.shields.io/static/v1?logo=dotnet&label=.NET&message=v8&labelColor=555555&color=512bd4&logoColor=ffffff)](https://dotnet.microsoft.com/ja-jp/)
+
+## 前提
+
+- インストール
+  - [Windows Subsystem for Linux](https://learn.microsoft.com/ja-jp/windows/wsl/)
+  - [Git](https://git-scm.com/)
+  - [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+  - [Docker Desktop](https://www.docker.com/ja-jp/products/docker-desktop/)
+  - [Visual Studio Code](https://code.visualstudio.com/)
+
+## はじめにやること
+
+1. Windows Subsystem for Linux 上でプログラムダウンロード
+
+    ```bash
+    git clone 'https://github.com/q23isline/study-sam-dotnet.git'
+    ```
+
+2. リポジトリのカレントディレクトリへ移動
+
+    ```bash
+    cd study-sam-dotnet
+    ```
+
+3. アプリ立ち上げ
+
+    ```bash
+    sam build
+    sam local start-api --debug > logs/debug.log 2>&1
+    ```
+
+## 日常的にやること
+
+### システム起動
+
+```bash
+sam local start-api --debug > logs/debug.log 2>&1
+```
+
+### システム終了
+
+ターミナルで Ctrl + c
+
+### バックエンドのビルド
+
+```bash
+sam build
+```
+
+## 動作確認
+
+### URL
+
+- <http://localhost:3000>
+
+## バックエンドフォーマット解析単体実行
+
+```bash
+docker run --rm -w /app -v $(pwd):/app mcr.microsoft.com/dotnet/sdk:8.0 dotnet format --verify-no-changes ./src/ServerlessAPI/ServerlessAPI.csproj
+```
+
+## AWS SAM テンプレートを検証
+
+```bash
+sam validate --lint
+```
+
+---
+
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
 - src - Code for the application's Lambda function.
