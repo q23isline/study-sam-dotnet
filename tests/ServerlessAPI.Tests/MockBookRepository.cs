@@ -1,10 +1,12 @@
-﻿using Bogus;
-using ServerlessAPI.Entities;
-using ServerlessAPI.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Bogus;
+
+using ServerlessAPI.Entities;
+using ServerlessAPI.Repositories;
 
 namespace ServerlessAPI.Tests;
 

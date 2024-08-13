@@ -1,7 +1,9 @@
 using System.Text.Json;
+
 using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+
 using ServerlessAPI.Repositories;
 
 
@@ -35,11 +37,11 @@ builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 builder.Services
         .AddCors(options =>
         {
-                options.AddDefaultPolicy(
-                policy =>
-                {
-                        policy.WithOrigins("http://localhost:3000", "http://localhost:5000", "http://localhost:5173");
-                });
+            options.AddDefaultPolicy(
+            policy =>
+            {
+                policy.WithOrigins("http://localhost:3000", "http://localhost:5000", "http://localhost:5173");
+            });
         });
 
 var app = builder.Build();

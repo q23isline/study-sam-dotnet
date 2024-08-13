@@ -1,5 +1,6 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
+
 using ServerlessAPI.Entities;
 
 namespace ServerlessAPI.Repositories;
