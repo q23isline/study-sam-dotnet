@@ -30,6 +30,7 @@ builder.Services
 // with a Lambda function contained in the Amazon.Lambda.AspNetCoreServer package, which marshals the request into the ASP.NET Core hosting framework.
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
+// <https://learn.microsoft.com/ja-jp/aspnet/core/security/cors?view=aspnetcore-8.0#cors-with-named-policy-and-middleware>
 // TODO: ローカル開発用に許可しているので、環境変数などで制御できるようにする
 builder.Services
         .AddCors(options =>
