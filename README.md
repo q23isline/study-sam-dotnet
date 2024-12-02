@@ -18,23 +18,25 @@
 
 ## はじめにやること
 
-1. Windows Subsystem for Linux 上でプログラムダウンロード
+1. 先にこちらの環境構築をする
+    - <https://github.com/q23isline/study_vue3>
+2. Windows Subsystem for Linux 上でプログラムダウンロード
 
     ```bash
     git clone 'https://github.com/q23isline/study-sam-dotnet.git'
     ```
 
-2. リポジトリのカレントディレクトリへ移動
+3. リポジトリのカレントディレクトリへ移動
 
     ```bash
     cd study-sam-dotnet
     ```
 
-3. アプリ立ち上げ
+4. アプリ立ち上げ
 
     ```bash
     sam build
-    sam local start-api --debug > logs/debug.log 2>&1
+    sam local start-api --debug > logs/debug.log 2>&1 --docker-network study_vue3_backend
     ```
 
 ## 日常的にやること
@@ -42,7 +44,7 @@
 ### システム起動
 
 ```bash
-sam local start-api --debug > logs/debug.log 2>&1
+sam local start-api --debug > logs/debug.log 2>&1 --docker-network study_vue3_backend
 ```
 
 ### システム終了
